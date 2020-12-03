@@ -7,5 +7,13 @@
 - 6 - Login as ansadmin user --> su - ansadmin
 - 7 - Create ssh-key in order to exchange ssh-key and passwordless access to managed nodes --> ssh-keygen
 - 8 - Logout from ansadmin user
-- 9 - Give PasswordAuthentication Yes --> vim /etc/ssh/sshd_config comment out PasswordAuthentication Yes comment PasswordAuthentication No
+- 9 - Give PasswordAuthentication Yes --> vim /etc/ssh/sshd_config uncomment PasswordAuthentication Yes comment out PasswordAuthentication No
 - 10 - Restart sshd service in order to apply changes--> systemctl restart sshd
+- 11 - Install pyhton, pip --> yum install python -y | yum install python-pip -y
+- 12 - Install Ansible --> pip install ansible
+- 13 - Verify ansible --> ansible --version
+- 14 - Whenever we install ansible with pip it doesn't come with configuration file, we have to create configuration file.
+- 15 - Create ansible directory inside /etc/ in order to create ansible.cfg file --> mkdir /etc/ansible && cd /etc/ansible
+- 16 - Create ansible.cfg --> vim ansible.cfg (Search on google for 'ansible configuration file' copy and past context)
+
+# Create and Configure RHEL Managed Node
