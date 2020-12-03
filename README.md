@@ -1,0 +1,11 @@
+# Create and Configure Ansible Controller
+- 1 - Spin up EC2 instance.
+- 2 - Create user for ansible controller --> useradd ansadmin
+- 3 - Give password for ansadmin user --> passwd ansadmin
+- 4 - Add ansadmin user to sudoer file --> visudo
+- 5 - Copy and paste following command to suoder file --> ansadmin ALL=(ALL)      NOPASSWD:ALL
+- 6 - Login as ansadmin user --> su - ansadmin
+- 7 - Create ssh-key in order to exchange ssh-key and passwordless access to managed nodes --> ssh-keygen
+- 8 - Logout from ansadmin user
+- 9 - Give PasswordAuthentication Yes --> vim /etc/ssh/sshd_config comment out PasswordAuthentication Yes comment PasswordAuthentication No
+- 10 - Restart sshd service in order to apply changes--> systemctl restart sshd
