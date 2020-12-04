@@ -18,7 +18,7 @@
 
 # Create and Configure RHEL Managed Node
 - 1 - Spin up EC2 instance.
-- 2 - Create user for ansible controller --> useradd ansadmin
+- 2 - Create user for ansible controller --> useradd -m -d /home/ansadmin ansadmin
 - 3 - Give password for ansadmin user --> passwd ansadmin
 - 4 - Add ansadmin user to sudoer file --> visudo
 - 5 - Copy and paste following command to suoder file --> ansadmin ALL=(ALL)      NOPASSWD:ALL
@@ -28,6 +28,18 @@
 - 9 - Login as ansadmin to Ansible-Controller vm.
 - 10 - Copy Ansible-Controller ssh-key to RHEL vm in order to access RHEL vm without password --> ssh-copy-id <Private-Ip-RHEL>
 
+# Create and Configure Ubuntu Managed Node
+- 1 - Spin up EC2 instance.
+- 2 - Create user for ansible controller --> useradd ansadmin
+- 3 - Give password for ansadmin user --> passwd ansadmin
+- 4 - Change default note editor to vim (Ubuntu default editor is nano) --> export EDITOR=vim
+- 5 - Add ansadmin user to sudoer file --> visudo
+- 6 - Copy and paste following command to suoder file --> ansadmin ALL=(ALL:ALL)      NOPASSWD:ALL
+- 7 - Give PasswordAuthentication Yes --> vim /etc/ssh/sshd_config change PasswordAuthentication from 'no' to 'yes'
+- 8 - Restart sshd service --> systemctl reload sshd
+- 9 - Copy private ip of Ubuntu-Managed-Node vm --> ip address show
+- 10 - Login as ansadmin to Ansible-Controller vm.
+- 11 - Copy Ansible-Controller ssh-key to Ubuntu vm in order to access Ubuntu vm without password --> ssh-copy-id <Private-Ip-UBUNTU>
 
 # Create Inventory File for Ansible
 - 1 - Connect to Ansible-Controller vm.
