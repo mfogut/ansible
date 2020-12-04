@@ -35,4 +35,5 @@
 - 3 - Create inventory (hosts) file and add Managed Nodes ip adresses --> vim hosts
 - 4 - Verify connection between ansible-controller and managed-nodes --> ansible -m ping all
 - 5 - Ad-hoc command --> Ad-hoc commands are great for tasks you repeat rarely
-    - ansible all -m command -a 'date' --> will show date on managed hosts. 
+    - ansible all -m command -a 'date' --> will show date on managed hosts.
+    - ansible all -m yum -a 'name=git' -b --> Install managed hosts git with ad-hoc command. -b (become root)
