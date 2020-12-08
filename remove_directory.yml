@@ -2,7 +2,6 @@
 - name: This playbook will remove directory recusivly
   hosts: all
   become: true
-  become_method: su
   become_user: ansadmin
   
 
