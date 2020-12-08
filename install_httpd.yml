@@ -1,0 +1,19 @@
+- name: This task will install httpd server to Webservers
+  hosts: webservers
+  become: yes
+
+  tasks:
+  - name: This task will install httpd to webservers
+    yum:
+      name: httpd
+      state: present
+  
+  - name: This task will start httpd service
+    service:
+      name: httpd
+      state: started
+  
+  - name: This task will start httpd service on boot
+    service:
+      name: httpd
+      enabled: yes
