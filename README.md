@@ -18,7 +18,7 @@
 
 # Create and Configure RHEL Managed Node
 - 1 - Spin up EC2 instance.
-- 2 - Create user for ansible controller --> useradd -m -d /home/ansadmin ansadmin
+- 2 - Create user for ansible controller --> useradd ansadmin
 - 3 - Give password for ansadmin user --> passwd ansadmin
 - 4 - Add ansadmin user to sudoer file --> visudo
 - 5 - Copy and paste following command to suoder file --> ansadmin ALL=(ALL)      NOPASSWD:ALL
@@ -30,7 +30,7 @@
 
 # Create and Configure Ubuntu Managed Node
 - 1 - Spin up EC2 instance.
-- 2 - Create user for ansible controller --> useradd ansadmin
+- 2 - Create user for ansible controller -->  useradd -m -d /home/ansadmin ansadmin
 - 3 - Give password for ansadmin user --> passwd ansadmin
 - 4 - Change default note editor to vim (Ubuntu default editor is nano) --> export EDITOR=vim
 - 5 - Add ansadmin user to sudoer file --> visudo

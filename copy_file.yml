@@ -1,0 +1,10 @@
+---
+- name: This playbook will copy file from ansible controller to managened nodes
+  hosts: all
+  become: true
+  
+  tasks:
+  - name: This will copy file
+    copy:
+      src: /etc/ansible/test
+      dest: /home/ansadmin/test
