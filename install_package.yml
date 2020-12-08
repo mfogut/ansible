@@ -1,0 +1,25 @@
+---
+- name: This playbook will install git and tree to RedHat and Ubuntu VMs
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: This task will install git and tree to RedHat VMs
+    yum:
+      name:
+        - git
+        - tree
+      state: present
+    when: ansible_os_family == "RedHat"
+
+  - name: This task will install git to Ubuntu VM
+    apt:
+      name: git
+      state: present
+    when: ansible_os_family == "Debian"
+
+  - name: This task will install tree to Ubuntu VM
+    snap:
+      name: tree
+      state: present
+    when: ansible_os_family == "Debian"
