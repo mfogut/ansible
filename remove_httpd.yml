@@ -1,0 +1,17 @@
+---
+- name: This playbook will uninstall httpd server from webservers
+  hosts: webservers
+  become: true
+
+  tasks:
+  - name: This task will stop httpd server
+    service:
+      name: httpd
+      state: stopped
+    notify: Remove httpd service
+
+  handlers:
+  - name: Remove httpd service
+    yum:
+      name: httpd
+      state: removed
