@@ -1,0 +1,18 @@
+---
+- name: This playbook will install git and clone from git
+  hosts: all
+  become: true
+  vars_files:
+    - vault_pass.yml
+
+  tasks:
+  - name: This task will install git
+    yum:
+      name: git
+      state: present
+    when: ansible_os_family == "RedHat"
+
+  - name: This task will clone from git
+    git:
+      repo: https://mfogut:{{ password }}@github.com/mfogut/ansible.git
+      dest: /opt/test-vault
