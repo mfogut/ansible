@@ -1,0 +1,37 @@
+---
+#task file for RedHat Family VMs
+- name: Install httpd on Redhat
+  yum:
+    name: httpd
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: This task will change SELINUX config to allow to change httpd port to {{ custom_port }}
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: SELINUX=disabled
+  when: ansible_os_family == "RedHat"
+
+- name: This task will change httpd port number to {{ custom_port }} on RedHat Family VMs
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: '^Listen '
+    insertafter: '^#Listen '
+    line: Listen {{ custom_port }}
+  when: ansible_os_family == "RedHat"
+
+- name: Unconditionally reboot the machine with all defaults
+  reboot:
+
+- name: This task will start httpd service on boot on  Redhat VMs
+  systemd:
+    name: httpd
+    enabled: yes
+  when: ansible_os_family == "RedHat"
+
+- name: This task will restart httpd service on Redhat VMs
+  systemd:
+    name: httpd
+    state: reloaded
+  when: ansible_os_family == "RedHat"

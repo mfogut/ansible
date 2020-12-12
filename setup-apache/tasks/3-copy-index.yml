@@ -1,0 +1,7 @@
+---
+# tasks file for copy index.html to VMs
+- name: This task will copy inxdex.html file to managed-nodes
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    mode: 0666

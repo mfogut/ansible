@@ -1,0 +1,33 @@
+---
+#task file for Debian Family VMs
+- name: Install apache2 to Ubuntu
+  apt:
+    name: apache2
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: This task will change apache2 port number to {{ custom_port }} on Debian Family VMs
+  lineinfile:
+    path: /etc/apache2/ports.conf
+    regexp: '^Listen '
+    insertafter: '#/etc/apache2/sites-enabled/000-default.conf'
+    line: Listen {{ custom_port }}
+  when: ansible_os_family == "Debian"
+
+- name: This task will start apache2 service on Ubunt VMs
+  systemd:
+    name: apache2
+    state: started
+  when: ansible_os_family == "Debian"
+
+- name: This task will start httpd service on boot on Debian VMs
+  systemd:
+    name: apache2
+    enabled: yes
+  when: ansible_os_family == "Debian"
+
+- name: This task will restart apache2 service on Ubunt VMs
+  systemd:
+    name: apache2
+    state: reloaded
+  when: ansible_os_family == "Debian"
